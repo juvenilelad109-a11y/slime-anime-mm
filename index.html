@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="my">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SLIME ANIME MM - Burmese Anime Community</title>
+  <meta name="description" content="SLIME ANIME MM - Myanmar Anime Subtitle & Information Community">
+  
+  <!-- Google Fonts: Inter for English UI, Padauk / Noto Sans Myanmar for Burmese -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Padauk:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       1. CSS VARIABLES & BASE STYLES
+       ========================================================================== */
+    :root {
+      --bg-dark: #08070d;
+      --bg-card: rgba(22, 18, 36, 0.65);
+      --bg-card-hover: rgba(33, 27, 56, 0.85);
+      --primary-purple: #8b5cf6;
+      --accent-glow: #a855f7;
+      --slime-green: #10b981;
+      --slime-glow: #34d399;
+      --text-main: #f3f4f6;
+      --text-muted: #9ca3af;
+      --border-color: rgba(139, 92, 246, 0.25);
+      --border-glow: rgba(168, 85, 247, 0.5);
+      --font-main: 'Inter', 'Padauk', sans-serif;
+      --transition-speed: 0.3s;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: var(--font-main);
+      line-height: 1.6;
+      overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Ambient Background Effects */
+    body::before {
+      content: '';
+      position: fixed;
+      top: -200px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 1000px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, rgba(8, 7, 13, 0) 70%);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      cursor: pointer;
+      border: none;
+      outline: none;
+      font-family: inherit;
+    }
+
+    /* ==========================================================================
+       2. BRANDING & LOGO (CSS Slime Effect)
+       ========================================================================== */
+    .slime-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      font-size: 1.25rem;
+      letter-spacing: 0.5px;
+    }
+
+    .slime-icon {
+      width: 32px;
+      height: 32px;
+      background: linear-gradient(135deg, var(--accent-glow), var(--slime-glow));
+      border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+      box-shadow: 0 0 15px rgba(168, 85, 247, 0.6);
+      animation: morphing 6s ease-in-out infinite;
+    }
+
+    @keyframes morphing {
+      0%, 100% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; }
+      34% { border-radius: 70% 30% 50% 50% / 30% 30% 70% 70%; }
+      67% { border-radius: 100% 60% 60% 100% / 100% 100% 60% 60%; }
+    }
+
+    .slime-text {
+      background: linear-gradient(90deg, #ffffff, var(--accent-glow));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* ==========================================================================
+       3. NAVIGATION & HEADER
+       ========================================================================== */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(8, 7, 13, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+      list-style: none;
+    }
+
+    .nav-link {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      transition: color var(--transition-speed);
+      padding: 0.5rem 0;
+      position: relative;
+    }
+
+    .nav-link:hover, .nav-link.active {
+      color: var(--text-main);
+    }
+
+    .nav-link.active::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: var(--accent-glow);
+      box-shadow: 0 0 8px var(--accent-glow);
+    }
+
+    .btn-telegram-nav {
+      background: linear-gradient(135deg, #25a3e0, #0088cc);
+      color: #fff;
+      padding: 0.5rem 1.25rem;
+      border-radius: 20px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+    }
+
+    .btn-telegram-nav:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 15px rgba(0, 136, 204, 0.5);
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      color: var(--text-main);
+      font-size: 1.5rem;
+    }
+
+    /* ==========================================================================
+       4. HERO SECTION (HOME)
+       ========================================================================== */
+    .hero {
+      padding: 5rem 1.5rem 4rem;
+      text-align: center;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      padding: 0.4rem 1rem;
+      background: rgba(139, 92, 246, 0.15);
+      border: 1px solid var(--border-color);
+      border-radius: 50px;
+      color: var(--accent-glow);
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-title {
+      font-size: 2.75rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+
+    .hero-subtitle {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+      font-family: 'Padauk', sans-serif;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary-purple), var(--accent-glow));
+      color: #fff;
+      padding: 0.8rem 2rem;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: all var(--transition-speed);
+      box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(139, 92, 246, 0.5);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+      padding: 0.8rem 2rem;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: all var(--transition-speed);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: var(--accent-glow);
+    }
+
+    /* ==========================================================================
+       5. CONTENT SECTIONS & GLASS CARDS
+       ========================================================================== */
+    main {
+      flex: 1;
+      max-width: 1200px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-title::before {
+      content: '';
+      width: 4px;
+      height: 20px;
+      background: var(--accent-glow);
+      border-radius: 2px;
+      box-shadow: 0 0 8px var(--accent-glow);
+    }
+
+    .anime-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .anime-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: all var(--transition-speed);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .anime-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--border-glow);
+      box-shadow: 0 8px 25px rgba(139, 92, 246, 0.2);
+    }
+
+    .card-poster {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      background-color: rgba(255, 255, 255, 0.02);
+    }
+
+    .card-content {
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .card-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      line-height: 1.3;
+      margin-bottom: 0.25rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .card-subtitle {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+      font-family: 'Padauk', sans-serif;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .card-badge-container {
+      display: flex;
+      gap: 5px;
+      flex-wrap: wrap;
+      margin-top: auto;
+    }
+
+    .badge {
+      font-size: 0.7rem;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+
+    .badge-sub {
+      background: rgba(16, 185, 129, 0.15);
+      color: var(--slime-glow);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+
+    .badge-genre {
+      background: rgba(139, 92, 246, 0.15);
+      color: var(--accent-glow);
+    }
+
+    /* ==========================================================================
+       6. EMPTY STATES
+       ========================================================================== */
+    .empty-state {
+      text-align: center;
+      padding: 4rem 2rem;
+      background: var(--bg-card);
+      border: 1px dashed var(--border-color);
+      border-radius: 12px;
+      margin: 2rem 0;
+    }
+
+    .empty-state-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      opacity: 0.6;
+    }
+
+    .empty-state-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .empty-state-desc {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      font-family: 'Padauk', sans-serif;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    /* ==========================================================================
+       7. CATALOG CONTROLS (SEARCH & FILTERS)
+       ========================================================================== */
+    .catalog-controls {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+      background: var(--bg-card);
+      padding: 1rem;
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+    }
+
+    .search-input {
+      flex: 1;
+      min-width: 200px;
+      background: rgba(8, 7, 13, 0.6);
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      padding: 0.6rem 1rem;
+      color: var(--text-main);
+      font-family: inherit;
+    }
+
+    .search-input:focus {
+      outline: none;
+      border-color: var(--accent-glow);
+    }
+
+    .filter-select {
+      background: rgba(8, 7, 13, 0.6);
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      padding: 0.6rem 1rem;
+      color: var(--text-main);
+      font-family: inherit;
+      cursor: pointer;
+    }
+
+    .filter-select:focus {
+      outline: none;
+      border-color: var(--accent-glow);
+    }
+
+    /* ==========================================================================
+       8. DETAILS VIEW & VIDEO PLAYER
+       ========================================================================== */
+    .details-container {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 2rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .details-poster {
+      width: 100%;
+      border-radius: 12px;
+      object-fit: cover;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+    }
+
+    .details-meta-title {
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 0.25rem;
+    }
+
+    .details-meta-sub {
+      font-size: 1.2rem;
+      color: var(--accent-glow);
+      font-family: 'Padauk', sans-serif;
+      margin-bottom: 1.5rem;
+    }
+
+    .details-meta-info {
+      display: flex;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .meta-item {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .meta-label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+
+    .meta-value {
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .details-description {
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 2rem;
+      font-family: 'Padauk', sans-serif;
+    }
+
+    .episodes-section {
+      margin-top: 2rem;
+    }
+
+    .episodes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+
+    .episode-btn {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+      padding: 0.6rem;
+      border-radius: 6px;
+      text-align: center;
+      font-weight: 600;
+      font-size: 0.85rem;
+      transition: all var(--transition-speed);
+    }
+
+    .episode-btn:hover {
+      background: var(--primary-purple);
+      border-color: var(--accent-glow);
+    }
+
+    /* Video Player Modal/Container */
+    .player-wrapper {
+      background: #000;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+      margin-bottom: 2rem;
+      position: relative;
+    }
+
+    video {
+      width: 100%;
+      max-height: 550px;
+      display: block;
+    }
+
+    .player-controls-bar {
+      padding: 1rem;
+      background: var(--bg-card);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .video-error-msg {
+      padding: 3rem;
+      text-align: center;
+      color: #ef4444;
+      background: rgba(239, 68, 68, 0.1);
+      border: 1px solid rgba(239, 68, 68, 0.2);
+      border-radius: 8px;
+    }
+
+    /* ==========================================================================
+       9. FOOTER
+       ========================================================================== */
+    footer {
+      background: rgba(5, 4, 8, 0.95);
+      border-top: 1px solid var(--border-color);
+      padding: 3rem 1.5rem 1.5rem;
+      margin-top: auto;
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .footer-brand p {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      margin-top: 0.75rem;
+      font-family: 'Padauk', sans-serif;
+    }
+
+    .footer-title {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--text-main);
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-links a {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      transition: color var(--transition-speed);
+    }
+
+    .footer-links a:hover {
+      color: var(--accent-glow);
+    }
+
+    .copyright {
+      text-align: center;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      color: var(--text-muted);
+      font-size: 0.8rem;
+    }
+
+    /* ==========================================================================
+       10. RESPONSIVE MEDIA QUERIES
+       ========================================================================== */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: rgba(8, 7, 13, 0.95);
+        flex-direction: column;
+        padding: 1.5rem;
+        border-bottom: 1px solid var(--border-color);
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .details-container {
+        grid-template-columns: 1fr;
+      }
+
+      .details-poster {
+        max-width: 220px;
+        margin: 0 auto;
+      }
+
+      .hero-title {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER / NAVIGATION -->
+  <header>
+    <div class="nav-container">
+      <a href="#" onclick="navigateTo('home')" class="slime-logo">
+        <div class="slime-icon"></div>
+        <span class="slime-text">SLIME ANIME MM</span>
+      </a>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle Navigation">☰</button>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#" onclick="navigateTo('home')" class="nav-link active" id="nav-home">Home</a></li>
+        <li><a href="#" onclick="navigateTo('catalog')" class="nav-link" id="nav-catalog">Anime Library</a></li>
+        <li><a href="#" onclick="navigateTo('about')" class="nav-link" id="nav-about">About Us</a></li>
+        <li>
+          <a href="#" id="telegramHeaderBtn" target="_blank" rel="noopener" class="btn-telegram-nav">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.121l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.536-.197 1.006.128.832.941z"/></svg>
+            Telegram Channel
+          </a>
+        </li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT CONTAINER (DYNAMIC VIEWS) -->
+  <main id="app">
+    <!-- Content injected via JavaScript routing -->
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-brand">
+        <div class="slime-logo">
+          <div class="slime-icon"></div>
+          <span class="slime-text">SLIME ANIME MM</span>
+        </div>
+        <p>မြန်မာစာတန်းထိုး အန်းနီးမေးများနှင့် သတင်းအချက်အလက်များကို တစ်နေရာတည်းတွင် ကြည့်ရှုနိုင်သော မူပိုင် ကွန်မြူနတီ။</p>
+      </div>
+
+      <div>
+        <h4 class="footer-title">Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="#" onclick="navigateTo('home')">Home</a></li>
+          <li><a href="#" onclick="navigateTo('catalog')">Anime Library</a></li>
+          <li><a href="#" onclick="navigateTo('about')">About Community</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="footer-title">Community</h4>
+        <ul class="footer-links">
+          <li><a href="#" id="telegramFooterLink" target="_blank" rel="noopener">Official Telegram Channel</a></li>
+          <li><a href="#" id="telegramGroupFooterLink" target="_blank" rel="noopener">Telegram Discussion Group</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="copyright">
+      &copy; 2026 SLIME ANIME MM. All rights reserved. Designed for official community content distribution.
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       JAVASCRIPT: CONFIGURATION, DATA STORE & APPLICATION LOGIC
+       ========================================================================== -->
+  <script>
+    /* ==========================================================================
+       1. GLOBAL CONFIGURATION (Update Telegram Links Here)
+       ========================================================================== */
+    const SITE_CONFIG = {
+      telegramChannelUrl: "https://t.me/your_channel_username", // <-- Insert Telegram Channel Link
+      telegramGroupUrl: "",                                     // <-- Insert Optional Telegram Group Link
+    };
+
+    /* ==========================================================================
+       2. ANIME DATA CATALOG STORE (Editable JavaScript Object)
+       ========================================================================== */
+    const ANIME_DATA = [
+      /*
+      // --- UNCOMMENT TO TEST SAMPLE ENTRY ---
+      {
+        id: "sample-anime-1",
+        title: "Sample Anime Title",
+        titleBurmese: "နမူနာ အန်နီမေး ခေါင်းစဉ်",
+        poster: "https://via.placeholder.com/300x450/161224/a855f7?text=Sample+Poster",
+        description: "ဒါကတော့ စမ်းသပ်စစ်ဆေးရန်အတွက် ထည့်သွင်းထားသော နမူနာ အကြောင်းအရာ ဖြစ်ပါသည်။",
+        genre: "Action",
+        season: "Fall 2026",
+        hasSubtitles: true,
+        episodes: [
+          {
+            episodeNumber: 1,
+            videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+            telegramPostUrl: "https://t.me/your_channel_username/1"
+          }
+        ]
+      }
+      */
+    ];
+
+    /* ==========================================================================
+       3. APP STATE & ROUTER
+       ========================================================================== */
+    const state = {
+      currentView: 'home',
+      selectedAnimeId: null,
+      selectedEpisode: null,
+      searchQuery: '',
+      selectedGenre: 'all'
+    };
+
+    function initApp() {
+      // Set up Telegram links across UI
+      const tgNav = document.getElementById('telegramHeaderBtn');
+      const tgFooter = document.getElementById('telegramFooterLink');
+      const tgGroupFooter = document.getElementById('telegramGroupFooterLink');
+
+      if (SITE_CONFIG.telegramChannelUrl) {
+        tgNav.href = SITE_CONFIG.telegramChannelUrl;
+        tgFooter.href = SITE_CONFIG.telegramChannelUrl;
+      } else {
+        tgNav.style.display = 'none';
+        tgFooter.style.display = 'none';
+      }
+
+      if (SITE_CONFIG.telegramGroupUrl) {
+        tgGroupFooter.href = SITE_CONFIG.telegramGroupUrl;
+      } else {
+        tgGroupFooter.parentElement.style.display = 'none';
+      }
+
+      // Mobile Menu Toggle
+      const toggleBtn = document.getElementById('menuToggle');
+      const navLinks = document.getElementById('navLinks');
+      toggleBtn.addEventListener('click', () => {
+        navLinks.classList.toggle('open');
+      });
+
+      // Initial Render
+      renderView();
+    }
+
+    function navigateTo(view, animeId = null, episodeNum = null) {
+      state.currentView = view;
+      state.selectedAnimeId = animeId;
+      state.selectedEpisode = episodeNum;
+
+      // Update active menu link
+      document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
+      const activeNav = document.getElementById(`nav-${view}`);
+      if (activeNav) activeNav.classList.add('active');
+
+      // Close mobile navigation on item click
+      document.getElementById('navLinks').classList.remove('open');
+
+      window.scrollTo(0, 0);
+      renderView();
+    }
+
+    /* ==========================================================================
+       4. VIEW RENDERERS
+       ========================================================================== */
+    function renderView() {
+      const app = document.getElementById('app');
+
+      switch (state.currentView) {
+        case 'home':
+          app.innerHTML = renderHome();
+          break;
+        case 'catalog':
+          app.innerHTML = renderCatalog();
+          attachCatalogEvents();
+          break;
+        case 'details':
+          app.innerHTML = renderDetails(state.selectedAnimeId);
+          break;
+        case 'watch':
+          app.innerHTML = renderWatch(state.selectedAnimeId, state.selectedEpisode);
+          break;
+        case 'about':
+          app.innerHTML = renderAbout();
+          break;
+        default:
+          app.innerHTML = renderHome();
+      }
+    }
+
+    // HOME VIEW
+    function renderHome() {
+      const featured = ANIME_DATA.slice(0, 4);
+
+      return `
+        <section class="hero">
+          <span class="hero-badge">SLIME ANIME MM Community</span>
+          <h1 class="hero-title">Welcome to SLIME ANIME MM</h1>
+          <p class="hero-subtitle">မြန်မာစာတန်းထိုး အန်းနီးမေးများနှင့် သတင်းအချက်အလက်များကို ကြည့်ရှုလေ့လာနိုင်သော တရားဝင် ကွန်မြူနတီ ဝက်ဘ်ဆိုက်။</p>
+          <div class="hero-actions">
+            <button class="btn-primary" onclick="navigateTo('catalog')">Explore Anime Library</button>
+            ${SITE_CONFIG.telegramChannelUrl ? `
+              <a href="${SITE_CONFIG.telegramChannelUrl}" target="_blank" rel="noopener" class="btn-secondary">Join Telegram Community</a>
+            ` : ''}
+          </div>
+        </section>
+
+        <section>
+          <h2 class="section-title">Featured Content</h2>
+          ${featured.length === 0 ? renderEmptyState("No Featured Anime Yet", "လောလောဆယ်တွင် ထည့်သွင်းထားသော အန်နီမေး မရှိသေးပါ။ မကြာမီ အသစ်များ ထည့်သွင်းပေးသွားပါမည်။") : renderGrid(featured)}
+        </section>
+      `;
+    }
+
+    // CATALOG VIEW
+    function renderCatalog() {
+      let filtered = ANIME_DATA.filter(anime => {
+        const matchesSearch = anime.title.toLowerCase().includes(state.searchQuery.toLowerCase()) ||
+                              (anime.titleBurmese && anime.titleBurmese.includes(state.searchQuery));
+        const matchesGenre = state.selectedGenre === 'all' || anime.genre === state.selectedGenre;
+        return matchesSearch && matchesGenre;
+      });
+
+      // Extract unique genres for filter option
+      const genres = Array.from(new Set(ANIME_DATA.map(a => a.genre).filter(Boolean)));
+
+      return `
+        <h2 class="section-title">Anime Library</h2>
+
+        <div class="catalog-controls">
+          <input type="text" id="searchInput" class="search-input" placeholder="Search by title / ခေါင်းစဉ်ဖြင့် ရှာဖွေပါ..." value="${state.searchQuery}">
+          
+          <select id="genreFilter" class="filter-select">
+            <option value="all">All Genres</option>
+            ${genres.map(g => `<option value="${g}" ${state.selectedGenre === g ? 'selected' : ''}>${g}</option>`).join('')}
+          </select>
+        </div>
+
+        ${filtered.length === 0 ? renderEmptyState("No Anime Found", "ရှာဖွေမှုနှင့် ကိုက်ညီသော အန်နီမေး မတွေ့ရှိပါ။ သို့မဟုတ် စာရင်း ထည့်သွင်းထားခြင်း မရှိသေးပါ။") : renderGrid(filtered)}
+      `;
+    }
+
+    function attachCatalogEvents() {
+      const searchInput = document.getElementById('searchInput');
+      const genreFilter = document.getElementById('genreFilter');
+
+      if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+          state.searchQuery = e.target.value;
+          renderView();
+        });
+      }
+
+      if (genreFilter) {
+        genreFilter.addEventListener('change', (e) => {
+          state.selectedGenre = e.target.value;
+          renderView();
+        });
+      }
+    }
+
+    // DETAILS VIEW
+    function renderDetails(animeId) {
+      const anime = ANIME_DATA.find(a => a.id === animeId);
+      if (!anime) {
+        return renderEmptyState("Anime Not Found", "တောင်းဆိုထားသော အန်နီမေး အချက်အလက် ရှာမတွေ့ပါ။");
+      }
+
+      return `
+        <div class="details-container">
+          <div>
+            <img class="details-poster" src="${anime.poster || 'https://via.placeholder.com/300x450/161224/a855f7?text=No+Poster'}" alt="${anime.title}">
+          </div>
+          <div>
+            <h1 class="details-meta-title">${anime.title}</h1>
+            ${anime.titleBurmese ? `<div class="details-meta-sub">${anime.titleBurmese}</div>` : ''}
+            
+            <div class="details-meta-info">
+              ${anime.genre ? `<div class="meta-item"><span class="meta-label">Genre</span><span class="meta-value">${anime.genre}</span></div>` : ''}
+              ${anime.season ? `<div class="meta-item"><span class="meta-label">Season</span><span class="meta-value">${anime.season}</span></div>` : ''}
+              <div class="meta-item"><span class="meta-label">Subtitles</span><span class="meta-value">${anime.hasSubtitles ? 'Burmese Sub' : 'Raw / None'}</span></div>
+            </div>
+
+            ${anime.description ? `<p class="details-description">${anime.description}</p>` : ''}
+
+            <div class="episodes-section">
+              <h3 class="section-title">Available Episodes</h3>
+              ${!anime.episodes || anime.episodes.length === 0 ? `
+                <p style="color: var(--text-muted);">အပိုင်းများ မရှိသေးပါ။</p>
+              ` : `
+                <div class="episodes-grid">
+                  ${anime.episodes.map(ep => `
+                    <button class="episode-btn" onclick="navigateTo('watch', '${anime.id}', ${ep.episodeNumber})">
+                      Episode ${ep.episodeNumber}
+                    </button>
+                  `).join('')}
+                </div>
+              `}
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    // WATCH VIEW (HTML5 PLAYER)
+    function renderWatch(animeId, episodeNum) {
+      const anime = ANIME_DATA.find(a => a.id === animeId);
+      if (!anime) return renderEmptyState("Anime Not Found", "အချက်အလက် ရှာမတွေ့ပါ။");
+
+      const episode = anime.episodes ? anime.episodes.find(e => e.episodeNumber === episodeNum) : null;
+      if (!episode) return renderEmptyState("Episode Not Found", "တောင်းဆိုထားသော အပိုင်း ရှာမတွေ့ပါ။");
+
+      return `
+        <button class="btn-secondary" onclick="navigateTo('details', '${anime.id}')" style="margin-bottom: 1rem;">← Back to Details</button>
+
+        <h2 style="margin-bottom: 0.5rem;">${anime.title}</h2>
+        <p style="color: var(--accent-glow); margin-bottom: 1.5rem;">Episode ${episode.episodeNumber}</p>
+
+        <div class="player-wrapper">
+          ${episode.videoUrl ? `
+            <video controls preload="metadata" poster="${anime.poster || ''}">
+              <source src="${episode.videoUrl}" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          ` : `
+            <div class="video-error-msg">
+              <strong>Direct Player Unavailable</strong><br>
+              ဤအပိုင်းအတွက် တိုက်ရိုက်ကြည့်ရှုနိုင်သော Video Link မရှိသေးပါ သို့မဟုတ် တိုက်ရိုက်လင့်ခ်မဟုတ်ပါ။
+            </div>
+          `}
+
+          <div class="player-controls-bar">
+            <span>Episode ${episode.episodeNumber}</span>
+            ${episode.telegramPostUrl ? `
+              <a href="${episode.telegramPostUrl}" target="_blank" rel="noopener" class="btn-telegram-nav">
+                Watch on Telegram Post
+              </a>
+            ` : ''}
+          </div>
+        </div>
+      `;
+    }
+
+    // ABOUT VIEW
+    function renderAbout() {
+      return `
+        <div style="background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 16px; padding: 2.5rem; max-width: 800px; margin: 0 auto;">
+          <h2 class="section-title">About SLIME ANIME MM</h2>
+          <p style="margin-bottom: 1.5rem; font-family: 'Padauk', sans-serif; line-height: 1.8;">
+            SLIME ANIME MM သည် မြန်မာအန်နီမေး ချစ်သူများအတွက် တရားဝင် သတင်းအချက်အလက်များ၊ စာတန်းထိုး အပိုင်းများကို စနစ်တကျ စုစည်းဖော်ပြပေးသော ပလက်ဖောင်း ဖြစ်ပါသည်။
+          </p>
+          <p style="margin-bottom: 1.5rem; font-family: 'Padauk', sans-serif; line-height: 1.8;">
+            ကျွန်ုပ်တို့၏ Telegram Channel တွင် အဖွဲ့ဝင် ၁၀,၀၀၀ ကျော်နှင့်အတူ အနီးကပ် ချိတ်ဆက်ဆောင်ရွက်လျက်ရှိပါသည်။
+          </p>
+          
+          ${SITE_CONFIG.telegramChannelUrl ? `
+            <div style="margin-top: 2rem;">
+              <a href="${SITE_CONFIG.telegramChannelUrl}" target="_blank" rel="noopener" class="btn-primary" style="display: inline-block;">
+                Join Official Telegram Channel
+              </a>
+            </div>
+          ` : ''}
+        </div>
+      `;
+    }
+
+    // HELPER: GRID & EMPTY STATE RENDERERS
+    function renderGrid(list) {
+      return `
+        <div class="anime-grid">
+          ${list.map(anime => `
+            <div class="anime-card" onclick="navigateTo('details', '${anime.id}')">
+              <img class="card-poster" src="${anime.poster || 'https://via.placeholder.com/300x450/161224/a855f7?text=No+Poster'}" alt="${anime.title}" loading="lazy">
+              <div class="card-content">
+                <div class="card-title">${anime.title}</div>
+                ${anime.titleBurmese ? `<div class="card-subtitle">${anime.titleBurmese}</div>` : ''}
+                <div class="card-badge-container">
+                  ${anime.hasSubtitles ? `<span class="badge badge-sub">MM Sub</span>` : ''}
+                  ${anime.genre ? `<span class="badge badge-genre">${anime.genre}</span>` : ''}
+                </div>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      `;
+    }
+
+    function renderEmptyState(title, desc) {
+      return `
+        <div class="empty-state">
+          <div class="empty-state-icon">📺</div>
+          <div class="empty-state-title">${title}</div>
+          <div class="empty-state-desc">${desc}</div>
+        </div>
+      `;
+    }
+
+    // Initialize Application
+    document.addEventListener('DOMContentLoaded', initApp);
+  </script>
+</body>
+</html>
