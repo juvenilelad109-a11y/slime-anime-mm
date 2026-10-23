@@ -1,0 +1,19 @@
+[
+  {
+    "id": "sample-anime-1",
+    "title": "Sample Anime Title",
+    "titleBurmese": "နမူနာ အန်နီမေး",
+    "poster": "https://example.com/poster.jpg",
+    "description": "ဒီ Anime ရဲ့ အကြောင်းအရာကို ဒီနေရာမှာ ရေးပါ",
+    "genre": "Action",
+    "season": "Fall 2026",
+    "hasSubtitles": true,
+    "episodes": [
+      {
+        "episodeNumber": 1,
+        "videoUrl": "",
+        "telegramPostUrl": "https://t.me/your_channel_username/1"
+      }
+    ]
+  }
+]
